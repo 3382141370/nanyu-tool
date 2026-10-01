@@ -4,39 +4,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
+      - name: set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
 
-    # 1. 强制下载并指定使用 Gradle 8.4
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
-      with:
-        gradle-version: 8.4
+      # 安装Android SDK command‑line tools，自动设置ANDROID_HOME
+      - name: Install Android SDK
+        uses: android-actions/setup-android@v3
 
-    # 2. 生成编译脚本
-    - name: Generate Gradle Wrapper
-      run: gradle wrapper --gradle-version 8.4
+      # gradle缓存，加速构建
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
-    # 3. 赋予执行权限
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      # 生成local.properties，此时ANDROID_HOME已经有有效值
+      - name: Create local.properties
+        run: echo "sdk.dir=$ANDROID_HOME" > local.properties
 
-    # 4. 动态获取 SDK 路径（不要写死路径）
-    - name: Create local.properties
-      run: echo "sdk.dir=$ANDROID_HOME" > local.properties
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
-    # 5. 开始编译
-    - name: Build with Gradle
-      run: ./gradlew assembleDebug
+      - name: Build with Gradle
+        run: ./gradlew assembleDebug --stacktrace
 
-    # 6. 上传编译好的 APK
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: 南羽Tool-APK
-        path: app/build/outputs/apk/debug/app-debug.apk
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: 南羽Tool-APK
+          path: app/build/outputs/apk/debug/app-debug.apk
