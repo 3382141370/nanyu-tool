@@ -12,15 +12,29 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # 直接告诉编译工具，SDK 在 GitHub 云端的默认位置
+    # 1. 强制下载并指定使用 Gradle 8.4
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+      with:
+        gradle-version: 8.4
+
+    # 2. 生成编译脚本
+    - name: Generate Gradle Wrapper
+      run: gradle wrapper --gradle-version 8.4
+
+    # 3. 赋予执行权限
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    # 4. 动态获取 SDK 路径（不要写死路径）
     - name: Create local.properties
-      run: echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
+      run: echo "sdk.dir=$ANDROID_HOME" > local.properties
 
-    # 直接使用云端自带的 Gradle 编译，不再去下载
+    # 5. 开始编译
     - name: Build with Gradle
-      run: gradle assembleDebug
+      run: ./gradlew assembleDebug
 
-    # 把编译好的 APK 传上来
+    # 6. 上传编译好的 APK
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
