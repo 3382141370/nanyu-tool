@@ -12,19 +12,15 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Generate Gradle Wrapper
-      run: gradle wrapper --gradle-version 8.4
-
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-
-    # 直接告诉编译工具，SDK 在这里（云端默认位置）
+    # 直接告诉编译工具，SDK 在 GitHub 云端的默认位置
     - name: Create local.properties
       run: echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
 
+    # 直接使用云端自带的 Gradle 编译，不再去下载
     - name: Build with Gradle
-      run: ./gradlew assembleDebug
+      run: gradle assembleDebug
 
+    # 把编译好的 APK 传上来
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
