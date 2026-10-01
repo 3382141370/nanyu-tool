@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="南 羽 T O O L"
+            android:textColor="@color/neon_cyan"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.3"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="6dp"/>
+
+        <TextView
+            android:id="@+id/tvRootState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_root"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/neon_cyan"
+            android:textSize="14sp"
+            android:text="Root：检测中…"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnReboot"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_button"
+            android:text="重启手机"
+            android:textColor="@color/neon_cyan"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRecovery"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button"
+            android:text="重启到 Recovery"
+            android:textColor="@color/neon_cyan"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFastboot"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button"
+            android:text="重启到 Fastboot 模式"
+            android:textColor="@color/neon_cyan"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFastbootd"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button"
+            android:text="重启到 Fastbootd 模式"
+            android:textColor="@color/neon_cyan"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnShutdown"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button"
+            android:text="关机"
+            android:textColor="@color/neon_cyan"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/neon_cyan_dim"/>
+
+        <TextView
+            android:id="@+id/tvScript1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="脚本1：未选择"
+            android:textColor="@color/text_main"
+            android:textSize="15sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPick1"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_button"
+            android:text="选择脚本 1"
+            android:textColor="@color/neon_cyan"/>
+
+        <TextView
+            android:id="@+id/tvScript2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="脚本2：未选择"
+            android:textColor="@color/text_main"
+            android:textSize="15sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPick2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_button"
+            android:text="选择脚本 2"
+            android:textColor="@color/neon_cyan"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRunAll"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_button"
+            android:text="一 键 启 动"
+            android:textColor="@color/neon_cyan"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+    </LinearLayout>
+</ScrollView>
